@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css'
+
 const pageTitle = "关于我";
 
 const identity = {
@@ -14,6 +16,10 @@ const happy = true;
 const finished = false;
 const goal = 3;
 
+const skillColor = "crimson";
+const fontWeight = "bold";
+const textCase = "uppercase";
+
 ---
 
 <html lang="en">
@@ -23,6 +29,18 @@ const goal = 3;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+        <style define:vars={{skillColor, fontWeight, textCase}}>
+            h1 {
+                color: purple;
+                font-size: 4rem;
+            }
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+                font-size: 1.5rem;
+            }
+        </style>
 	</head>
     <body>
         <a href="/">首页</a>
@@ -58,7 +76,7 @@ const goal = 3;
         <p>我的技能是：</p>
         <ul>
         {skills.length === 0 && <li>我什么技能都没有！</li>}
-        {skills.length > 0 && skills.map((skill) => <li>{skill}</li>)}            
+        {skills.length > 0 && skills.map((skill) => <li class="skill">{skill}</li>)}            
         </ul>
 
 
